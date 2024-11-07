@@ -1,0 +1,101 @@
+I assigned 2 tickets to you
+
+they are related
+
+the one is very simple, just remove the sign up button from the user profile page
+
+and remove any code on that page and the related proc page that references mailchimp
+
+the other one is to change the release notice mailing list signup link to go to hubspot instead of mailchimp
+
+should also be easy
+
+the only tricky part is that you pass the current domain as a parameter in the link and you need to make sure it actually uses the current domain
+
+this is because we allow clients to have custom domains, for example, globalmeet.admin.webcasts.com instead of admin.webcasts.com
+
+this is noted in the ticket already
+
+unrelated to this ticket, but just so you know. The same thing can be done with the viewer domain, for example, globalmeet.webcasts.com instead of event.webcasts.com (edited) 
+
+and for reference, these are just domain names, they point to the same servers as the regular domain names
+
+
+
+
+
+
+
+===========================
+
+Deleted proc file
+proc_mailinglist_actions.jsp file from the location Convey>web>admin>management  
+
+Deleted code from userprofile.jsp file which is located in  Convey>web>admin>management 
+
+
++++++++++++++++++++++++++
+
+https://alphaadmin.webcasts.com/sc/update_mailinglist.jsp?site=alphaadmin.webcasts.com
+
+
+https://admin.webcasts.com/sc/update_mailinglist.jsp?site=admin.webcasts.com
+
+https://globalmeet.admin.webcasts.com/sc/update_mailinglist.jsp?site=globalmeet.admin.webcasts.com
+
+===================
+
+
+
+As a marketer, I need to manage contacts and mailing lists for different communication types within one CRM platform.
+
+Description: 
+
+Replace the existing Mailchimp embedded form with the new Hubspot one in our release alert sign-ups. Embed code included below.
+
+This alert appears at the top of the admin login screen when there is a release window blocked out on the system (Chuckmode). The Notify Me button points to this page https://admin.webcasts.com/sc/update_mailinglist.jsp  
+
+
+
+We currently pass the referring admin domain URL like this to be used by Mailchimp to separate lists and should continue to do so for use by Hubspot:
+
+https://admin.webcasts.com/sc/update_mailinglist.jsp?site=admin.webcasts.com
+
+https://globalmeet.admin.webcasts.com/sc/update_mailinglist.jsp?site=globalmeet.admin.webcasts.com
+
+ 
+
+Here is the Hubspot form embed code:
+
+
+
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    region: "na1",
+    portalId: "24480249",
+    formId: "fee0312c-c05d-4c8e-9f37-d725d2d5ddac"
+  });
+</script>
+
+
+Here's the direct link to the same Hubspot form: https://share.hsforms.com/1_uAxLMBdTI6fN9cl0tXdrAekp2x
+
+We will test this on alpha/beta to ensure that Hubspot is receiving the required information.
+
+ 
+==================
+Acceptance Criteria:
+Ensure that 
+
+the new form is loading correctly
+
+the form page URL still contains the parameter for the referring URL, ex. https://globalmeet.admin.webcasts.com/sc/update_mailinglist.jsp?site=globalmeet.admin.webcasts.com
+
+Work with marketing to test that
+
+data is being passed to Hubspot correctly
+
+they can use the URL and/or email address of the registrant to route the signup to the appropriate list
+
+Attachm
